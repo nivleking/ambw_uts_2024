@@ -1,4 +1,5 @@
 import 'package:ambw_uts_2024/home_page.dart';
+import 'package:ambw_uts_2024/intro_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,8 +12,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: "AMBW UTS 2024",
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: IntroPage(),
+      theme: ThemeData(
+        bottomAppBarTheme: BottomAppBarTheme(
+          color: Colors.grey[800],
+        ),
+      ),
     );
   }
 }
