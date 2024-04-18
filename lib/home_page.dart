@@ -1,5 +1,8 @@
+import 'package:ambw_uts_2024/components/carousel.dart';
+import 'package:ambw_uts_2024/components/food_card.dart';
 import 'package:ambw_uts_2024/components/search_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -49,6 +52,10 @@ class _HomePageState extends State<HomePage> {
               height: 16,
             ),
             MySearchBar(),
+            MyCarousel(),
+            Row(
+              children: [MyFoodCard()],
+            )
           ],
         ),
       ),
@@ -67,7 +74,7 @@ class _HomePageState extends State<HomePage> {
             label: 'Bookmark',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.trolley),
+            icon: Icon(FontAwesomeIcons.trophy),
             label: 'Top Foodie',
           ),
           BottomNavigationBarItem(
