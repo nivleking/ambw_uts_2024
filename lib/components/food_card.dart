@@ -1,16 +1,17 @@
 import 'dart:math';
 
+import 'package:ambw_uts_2024/models/restaurant_model.dart';
 import 'package:flutter/material.dart';
 
 class MyFoodCard extends StatelessWidget {
-  const MyFoodCard({super.key});
+  // Restaurant restaurant;
+  MyFoodCard({
+    super.key,
+    // required this.restaurant,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.grey,
-      child: Text("123456789"),
-      shape: RoundedRectangleBorder(),
-    );
+    return Placeholder();
   }
 }

@@ -5,30 +5,19 @@ class MySearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(12),
-      margin: EdgeInsets.symmetric(horizontal: 25),
-      decoration: BoxDecoration(
-          color: Colors.grey[200],
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: Colors.grey.shade300,
-            width: 2,
-          )),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.search_rounded,
-            color: Colors.grey,
+    return TextFormField(
+      decoration: InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(
+              color: Colors.yellow.shade700,
+            ),
           ),
-          SizedBox(
-            width: 12,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
           ),
-          Text("Search for restaurants..."),
-        ],
-      ),
+          hintText: "Search restaurants...",
+          prefixIcon: Icon(Icons.search)),
     );
   }
 }

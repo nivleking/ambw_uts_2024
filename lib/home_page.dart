@@ -1,6 +1,7 @@
 import 'package:ambw_uts_2024/components/carousel.dart';
 import 'package:ambw_uts_2024/components/food_card.dart';
 import 'package:ambw_uts_2024/components/search_bar.dart';
+import 'package:ambw_uts_2024/models/restaurant_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -51,10 +52,48 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 16,
             ),
-            MySearchBar(),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 12,
+              ),
+              child: MySearchBar(),
+            ),
+            SizedBox(
+              height: 16,
+            ),
             MyCarousel(),
-            Row(
-              children: [MyFoodCard()],
+            SizedBox(
+              height: 12,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 25.0,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // MyFoodCard(),
+                  Text(
+                    "Most Popular",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                  Text(
+                    "See all",
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 16,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            ListView.builder(
+              itemBuilder: (context, index) {
+                return MyFoodCard();
+              },
             )
           ],
         ),
