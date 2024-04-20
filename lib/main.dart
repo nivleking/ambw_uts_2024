@@ -1,4 +1,3 @@
-import 'package:ambw_uts_2024/home_page.dart';
 import 'package:ambw_uts_2024/intro_page.dart';
 import 'package:flutter/material.dart';
 
