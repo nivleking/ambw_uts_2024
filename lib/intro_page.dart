@@ -60,7 +60,7 @@ class IntroPage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => StartPage(),
+                      builder: (context) => const StartPage(),
                     ),
                   );
                 },
@@ -69,7 +69,7 @@ class IntroPage extends StatelessWidget {
                     color: Theme.of(context).colorScheme.primary,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  padding: EdgeInsets.all(25),
+                  padding: const EdgeInsets.all(25),
                   child: const Center(
                     child: Text(
                       "Order Now",
