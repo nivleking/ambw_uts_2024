@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 class MyCarousel extends StatefulWidget {
@@ -58,100 +57,119 @@ class _MyCarouselState extends State<MyCarousel> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.bottomLeft,
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          width: MediaQuery.of(context).size.width,
-          height: 180,
-          child: PageView.builder(
-            controller: _controller,
-            itemCount: images.length,
-            onPageChanged: (int page) {
-              setState(() {
-                _currentPage = page;
-              });
-            },
-            itemBuilder: (BuildContext context, int index) {
-              return Stack(
-                fit: StackFit.expand,
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        double width = constraints.maxWidth;
+        // double heigth = constraints.maxHeight;
+
+        double carouselWidth;
+        double carouselHeight;
+        if (width > 1200) {
+          carouselWidth = width - 40;
+          carouselHeight = 400;
+        } else if (width > 800) {
+          carouselWidth = width - 1;
+          carouselHeight = 300;
+        } else {
+          carouselWidth = width - 1;
+          carouselHeight = 200;
+        }
+
+        return Stack(
+          alignment: Alignment.bottomLeft,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              width: carouselWidth,
+              height: carouselHeight,
+              child: PageView.builder(
+                controller: _controller,
+                itemCount: images.length,
+                onPageChanged: (int page) {
+                  setState(() {
+                    _currentPage = page;
+                  });
+                },
+                itemBuilder: (BuildContext context, int index) {
+                  return Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.asset(
+                          images[index]["path"]!,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                      DecoratedBox(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          gradient: const LinearGradient(
+                            colors: [Colors.transparent, Colors.black54],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 16.0,
+                bottom: 16.0,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Image.asset(
-                      images[index]["path"]!,
-                      fit: BoxFit.cover,
+                  Text(
+                    images[_currentPage]["title"]!,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  DecoratedBox(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      gradient: const LinearGradient(
-                        colors: [Colors.transparent, Colors.black54],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
+                  Text(
+                    images[_currentPage]["places"]!,
+                    style: const TextStyle(
+                      color: Colors.white,
                     ),
                   ),
                 ],
-              );
-            },
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(
-            left: 16.0,
-            bottom: 16.0,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                images[_currentPage]
-                    ["title"]!, // Display the title of the current image
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
               ),
-              Text(
-                images[_currentPage]
-                    ["places"]!, // Display the place count of the current image
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
+            ),
+            Positioned(
+              bottom: 8,
+              right: 8,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: List.generate(images.length, (index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(
+                      right: 12,
+                      bottom: 12,
+                    ),
+                    child: Container(
+                      width: 10.0,
+                      height: 10.0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color:
+                            _currentPage == index ? Colors.white : Colors.grey,
+                      ),
+                    ),
+                  );
+                }),
               ),
-            ],
-          ),
-        ),
-        Positioned(
-          bottom: 8,
-          right: 8,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: List.generate(images.length, (index) {
-              return Padding(
-                padding: const EdgeInsets.only(
-                  right: 12,
-                  bottom: 12,
-                ),
-                child: Container(
-                  width: 10.0,
-                  height: 10.0,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: _currentPage == index ? Colors.white : Colors.grey,
-                  ),
-                ),
-              );
-            }),
-          ),
-        ),
-      ],
+            ),
+          ],
+        );
+      },
     );
   }
 }

@@ -13,7 +13,10 @@ class IntroPage extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
-            colors: [Colors.yellow[700]!, Colors.orange[700]!],
+            colors: [
+              Colors.yellow[700]!,
+              Colors.orange[700]!,
+            ],
           ),
         ),
         child: Padding(
@@ -63,7 +66,7 @@ class IntroPage extends StatelessWidget {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.yellow[700],
+                    color: Theme.of(context).colorScheme.primary,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   padding: EdgeInsets.all(25),

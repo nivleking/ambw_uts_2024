@@ -2,30 +2,41 @@ import 'package:ambw_uts_2024/models/restaurant_model.dart';
 import 'package:flutter/material.dart';
 
 class MyRestaurantCard extends StatelessWidget {
-  // final void Function()? onTap;
   final Restaurant restaurant;
+
   const MyRestaurantCard({
-    super.key,
+    Key? key,
     required this.restaurant,
-    // required this.onTap,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double containerWidth;
+    double containerHeight;
+    if (width > 1200) {
+      containerWidth = 400;
+      containerHeight = 200;
+    } else if (width > 800) {
+      containerWidth = 350;
+      containerHeight = 150;
+    } else {
+      containerWidth = 200;
+      containerHeight = 20;
+    }
+
     return GestureDetector(
-      onTap: () {
-        // print("123");
-      },
+      onTap: () {},
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
         ),
-        width: MediaQuery.of(context).size.width * 0.48,
-        height: MediaQuery.of(context).size.height * 0.2,
+        width: containerWidth,
+        height: containerHeight,
         child: Card(
           color: Theme.of(context).colorScheme.surface,
           borderOnForeground: true,
-          elevation: 2,
+          elevation: 3,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -37,8 +48,8 @@ class MyRestaurantCard extends StatelessWidget {
                 child: Image.asset(
                   restaurant.imagePath,
                   fit: BoxFit.cover,
-                  height: 100,
-                  width: MediaQuery.of(context).size.width,
+                  height: 150,
+                  width: containerWidth,
                 ),
               ),
               Padding(

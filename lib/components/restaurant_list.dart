@@ -7,66 +7,80 @@ class MyRestaurantListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        // print("Clicked");
-      },
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Image.asset(
-                restaurant.imagePath,
-                height: 100,
-                width: 140,
-                fit: BoxFit.fitHeight,
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        double width = constraints.maxWidth;
+        double padding;
+        if (width > 1200) {
+          padding = 150;
+        } else if (width > 800) {
+          padding = 60;
+        } else {
+          padding = 1;
+        }
+
+        return Padding(
+          padding: EdgeInsets.symmetric(horizontal: padding),
+          child: GestureDetector(
+            onTap: () {
+              // print("Clicked");
+            },
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
               ),
-            ),
-            Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(
-                  left: 8.0,
-                  top: 8.0,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                padding: EdgeInsets.all(8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      restaurant.name,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.asset(
+                        restaurant.imagePath,
+                        height: 100,
+                        width: 140,
+                        fit: BoxFit.fitHeight,
                       ),
                     ),
-                    Text(
-                      restaurant.description,
-                      style: const TextStyle(
-                        fontSize: 14,
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          left: 8.0,
+                          top: 8.0,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              restaurant.name,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(right: 14.0),
+                      child: Icon(
+                        Icons.arrow_forward_ios,
+                        size: 16,
                       ),
                     ),
                   ],
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(right: 14.0),
-              child: Icon(
-                Icons.arrow_forward_ios,
-                size: 16,
-              ),
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

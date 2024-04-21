@@ -60,7 +60,7 @@ class _MostPopularPageState extends State<MostPopularPage> {
           itemCount: 20,
           itemBuilder: (context, index) {
             return Container(
-              height: 100, // Set the height of the ListTile
+              height: 100,
               child: MyRestaurantListTile(
                 restaurant: widget.titleAppBar == "Popular"
                     ? restaurant.getRestaurants()[

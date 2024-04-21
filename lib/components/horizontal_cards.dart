@@ -14,21 +14,37 @@ class HorizontalCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 250,
-      child: ListView.builder(
-        itemCount: (mode == "restaurants")
-            ? restaurant.getRestaurants().length
-            : restaurant.getMeals().length,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return MyRestaurantCard(
-            restaurant: (mode == "restaurants")
-                ? restaurant.getRestaurants()[index]
-                : restaurant.getMeals()[index],
-          );
-        },
-      ),
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        double width = constraints.maxWidth;
+
+        EdgeInsets padding;
+        if (width > 1200) {
+          padding = const EdgeInsets.symmetric(horizontal: 20);
+        } else {
+          padding = const EdgeInsets.symmetric(horizontal: 1);
+        }
+
+        return Padding(
+          padding: padding,
+          child: Container(
+            height: 300, // Adjust this value as needed
+            child: ListView.builder(
+              itemCount: (mode == "restaurants")
+                  ? restaurant.getRestaurants().length
+                  : restaurant.getMeals().length,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return MyRestaurantCard(
+                  restaurant: (mode == "restaurants")
+                      ? restaurant.getRestaurants()[index]
+                      : restaurant.getMeals()[index],
+                );
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 }
