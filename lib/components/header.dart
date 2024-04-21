@@ -37,8 +37,9 @@ class HeaderComponent extends StatelessWidget {
                   MaterialPageRoute(
                     builder: ((context) {
                       return MostPopularPage(
-                        titleAppBar:
-                            titleHeader == "Most Popular" ? "Popular" : "Meal",
+                        titleAppBar: titleHeader == "Most Popular"
+                            ? titleHeader
+                            : "Meal Deals",
                       );
                     }),
                   ),

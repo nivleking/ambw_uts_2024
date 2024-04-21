@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
             ),
         colorScheme: ColorScheme(
           primary: Colors.yellow.shade700,
-          primaryContainer: Colors.yellow.shade800,
+          primaryContainer: Colors.orange.shade700,
           secondary: Colors.blue,
           secondaryContainer: Colors.blue.shade700,
           surface: Colors.white,
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           error: Colors.red,
           onPrimary: Colors.white,
           onSecondary: Colors.white,
-          onSurface: Colors.black,
+          onSurface: Colors.black87,
           onBackground: Colors.black,
           onError: Colors.white,
           brightness: Brightness.light,

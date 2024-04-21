@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final String leadingTitle;
   const MyCustomAppBar({
     super.key,
+    required this.leadingTitle,
   });
 
   @override
@@ -12,7 +14,10 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.yellow[700]!, Colors.orange[700]!],
+            colors: [
+              Theme.of(context).colorScheme.primary,
+              Theme.of(context).colorScheme.primaryContainer,
+            ],
           ),
         ),
         child: AppBar(
@@ -24,14 +29,14 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          title: const Text(
-            "Sydney CBD",
-            style: TextStyle(
+          title: Text(
+            leadingTitle,
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
           ),
-          centerTitle: true,
+          centerTitle: leadingTitle == "Sydney CBD" ? true : false,
         ),
       ),
     );

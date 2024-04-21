@@ -1,3 +1,4 @@
+import 'package:ambw_uts_2024/components/custom_app_bar.dart';
 import 'package:ambw_uts_2024/components/restaurant_list.dart';
 import 'package:ambw_uts_2024/models/restaurant_model.dart';
 import 'package:flutter/material.dart';
@@ -26,33 +27,8 @@ class _MostPopularPageState extends State<MostPopularPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight),
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.yellow[700]!, Colors.orange[700]!],
-            ),
-          ),
-          child: AppBar(
-            backgroundColor: Colors.transparent,
-            leading: IconButton(
-              icon: const Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-              ),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-            title: Text(
-              (widget.titleAppBar == "Popular") ? "Most Popular" : "Meal Deals",
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ),
+      appBar: MyCustomAppBar(
+        leadingTitle: widget.titleAppBar,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

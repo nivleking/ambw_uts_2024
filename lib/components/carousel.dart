@@ -66,13 +66,13 @@ class _MyCarouselState extends State<MyCarousel> {
         double carouselHeight;
         if (width > 1200) {
           carouselWidth = width - 40;
-          carouselHeight = 400;
+          carouselHeight = 600;
         } else if (width > 800) {
           carouselWidth = width - 1;
-          carouselHeight = 300;
+          carouselHeight = 400;
         } else {
           carouselWidth = width - 1;
-          carouselHeight = 200;
+          carouselHeight = 300;
         }
 
         return Stack(
