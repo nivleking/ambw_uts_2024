@@ -42,14 +42,14 @@ class MyRestaurantListTile extends StatelessWidget {
                   children: [
                     Text(
                       restaurant.name,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                       ),
                     ),
                     Text(
                       restaurant.description,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
                       ),
                     ),
@@ -57,8 +57,8 @@ class MyRestaurantListTile extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 14.0),
+            const Padding(
+              padding: EdgeInsets.only(right: 14.0),
               child: Icon(
                 Icons.arrow_forward_ios,
                 size: 16,
@@ -68,33 +68,5 @@ class MyRestaurantListTile extends StatelessWidget {
         ),
       ),
     );
-    // ListTile(
-    //   tileColor: Colors.white,
-    //   leading: ClipRRect(
-    //     child: Image.asset(
-    //       restaurant.imagePath,
-    //       width: 100,
-    //       fit: BoxFit.cover,
-    //     ),
-    //   ),
-    //   title: Text(
-    //     restaurant.name,
-    //     style: TextStyle(
-    //       fontSize: 18,
-    //     ),
-    //   ),
-    //   subtitle: Text(
-    //     restaurant.description,
-    //     style: TextStyle(
-    //       fontSize: 16,
-    //       color: Colors.grey[700],
-    //     ),
-    //   ),
-    //   trailing: Icon(
-    //     Icons.arrow_forward_ios,
-    //     color: Colors.grey,
-    //     size: 16, // Increase the size of the icon
-    //   ),
-    // );
   }
 }

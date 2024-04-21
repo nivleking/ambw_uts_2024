@@ -10,7 +10,7 @@ class DiscoveryPage extends StatefulWidget {
 class _DiscoveryPageState extends State<DiscoveryPage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text("Coming Soon! Stay Tuned."),
     );
   }

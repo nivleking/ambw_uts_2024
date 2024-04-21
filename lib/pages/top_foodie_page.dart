@@ -10,7 +10,7 @@ class TopFoodiePage extends StatefulWidget {
 class _TopFoodiePageState extends State<TopFoodiePage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text("Coming Soon! Stay Tuned."),
     );
   }

@@ -14,10 +14,22 @@ class _MyCarouselState extends State<MyCarousel> {
   int _currentPage = 0;
   Timer? _timer;
 
-  List<String> images = [
-    "lib/images/fried_chicken.jpg",
-    "lib/images/rice.jpg",
-    "lib/images/baked_wings.jpg",
+  List<Map<String, String>> images = [
+    {
+      "path": "assets/images/kfc.jpeg",
+      "title": "KFC",
+      "places": "10 Places",
+    },
+    {
+      "path": "assets/images/mcd.jpg",
+      "title": "McDonalds",
+      "places": "34 Places",
+    },
+    {
+      "path": "assets/images/tacobell.jpg",
+      "title": "Taco Bell",
+      "places": "12 Places"
+    },
   ];
 
   @override
@@ -70,14 +82,14 @@ class _MyCarouselState extends State<MyCarousel> {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(12),
                     child: Image.asset(
-                      images[index],
+                      images[index]["path"]!,
                       fit: BoxFit.cover,
                     ),
                   ),
                   DecoratedBox(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                         colors: [Colors.transparent, Colors.black54],
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
@@ -99,15 +111,17 @@ class _MyCarouselState extends State<MyCarousel> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "KFC Fried Chicken",
-                style: TextStyle(
+                images[_currentPage]
+                    ["title"]!, // Display the title of the current image
+                style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
-                "10 Places",
-                style: TextStyle(
+                images[_currentPage]
+                    ["places"]!, // Display the place count of the current image
+                style: const TextStyle(
                   color: Colors.white,
                 ),
               ),

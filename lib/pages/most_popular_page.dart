@@ -14,29 +14,14 @@ class MostPopularPage extends StatefulWidget {
 }
 
 class _MostPopularPageState extends State<MostPopularPage> {
-  List<Restaurant> restaurants = [
-    Restaurant(
-      name: "KFC Broadway",
-      address: "122 Queen Street",
-      category: "Fried Chicken, American",
-      imagePath: "lib/images/fried_chicken.jpg",
-      description: "KFC Fried Chicken",
-    ),
-    Restaurant(
-      name: "Greek House",
-      address: "23 Queen Street",
-      category: "Burritos, Greek",
-      imagePath: "lib/images/baked_wings.jpg",
-      description: "Greek House",
-    ),
-    Restaurant(
-      name: "Rumah Padang",
-      address: "Jl. Sudirman",
-      category: "Rice, Indonesia",
-      imagePath: "lib/images/rice.jpg",
-      description: "Nasi Padang",
-    ),
-  ];
+  late Restaurant restaurant;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    restaurant = Restaurant.empty();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +46,7 @@ class _MostPopularPageState extends State<MostPopularPage> {
             ),
             title: Text(
               (widget.titleAppBar == "Popular") ? "Most Popular" : "Meal Deals",
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
@@ -77,17 +62,17 @@ class _MostPopularPageState extends State<MostPopularPage> {
             return Container(
               height: 100, // Set the height of the ListTile
               child: MyRestaurantListTile(
-                restaurant: restaurants[index % restaurants.length],
+                restaurant: widget.titleAppBar == "Popular"
+                    ? restaurant.getRestaurants()[
+                        index % restaurant.getRestaurants().length]
+                    : restaurant
+                        .getMeals()[index % restaurant.getMeals().length],
               ),
             );
           },
           separatorBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.only(bottom: 6.0),
-              // child: Divider(
-              //   height: 1,
-              //   color: Colors.white,
-              // ),
+            return const Padding(
+              padding: EdgeInsets.only(bottom: 6.0),
             );
           },
         ),

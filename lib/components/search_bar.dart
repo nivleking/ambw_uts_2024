@@ -7,17 +7,23 @@ class MySearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(
-              color: Colors.yellow.shade700,
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          hintText: "Search restaurants...",
-          prefixIcon: Icon(Icons.search)),
+        fillColor: Theme.of(context).colorScheme.surface,
+        filled: true,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(),
+        ),
+        hintText: "Search restaurants...",
+        prefixIcon: const Icon(
+          Icons.search,
+          color: Colors.amber,
+        ),
+        helperMaxLines: 1,
+      ),
     );
   }
 }

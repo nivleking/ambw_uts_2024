@@ -1,3 +1,4 @@
+import 'package:ambw_uts_2024/components/custom_app_bar.dart';
 import 'package:ambw_uts_2024/pages/bookmark_page.dart';
 import 'package:ambw_uts_2024/pages/discovery_page.dart';
 import 'package:ambw_uts_2024/pages/home_page.dart';
@@ -33,41 +34,19 @@ class _HomePageState extends State<StartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight),
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.yellow[700]!, Colors.orange[700]!],
-            ),
-          ),
-          child: AppBar(
-            backgroundColor: Colors.transparent,
-            leading: IconButton(
-              icon: const Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-              ),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-            title: const Text(
-              "Sydney CBD",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            centerTitle: true,
-          ),
-        ),
-      ),
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: _widgetOptions.elementAt(_selectedIndex),
+      appBar: const MyCustomAppBar(),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
         selectedItemColor: Colors.black87,
-        items: <BottomNavigationBarItem>[
+        unselectedItemColor: Colors.black87,
+        showUnselectedLabels: false,
+        items: const [
           BottomNavigationBarItem(
-            backgroundColor: Colors.yellow.shade800,
             icon: Icon(
               Icons.home,
               size: 20,
@@ -75,7 +54,6 @@ class _HomePageState extends State<StartPage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            backgroundColor: Colors.yellow.shade800,
             icon: Icon(
               FontAwesomeIcons.mapMarked,
               size: 20,
@@ -83,7 +61,6 @@ class _HomePageState extends State<StartPage> {
             label: 'Discovery',
           ),
           BottomNavigationBarItem(
-            backgroundColor: Colors.yellow.shade800,
             icon: Icon(
               Icons.bookmark,
               size: 20,
@@ -91,7 +68,6 @@ class _HomePageState extends State<StartPage> {
             label: 'Bookmark',
           ),
           BottomNavigationBarItem(
-            backgroundColor: Colors.yellow.shade800,
             icon: Icon(
               FontAwesomeIcons.trophy,
               size: 20,
@@ -99,7 +75,6 @@ class _HomePageState extends State<StartPage> {
             label: 'Top Foodie',
           ),
           BottomNavigationBarItem(
-            backgroundColor: Colors.yellow.shade800,
             icon: Icon(
               Icons.person,
               size: 20,
@@ -107,8 +82,6 @@ class _HomePageState extends State<StartPage> {
             label: 'Profile',
           ),
         ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
       ),
     );
   }

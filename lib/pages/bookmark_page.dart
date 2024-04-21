@@ -10,7 +10,7 @@ class BookMarkPage extends StatefulWidget {
 class _BookMarkPageState extends State<BookMarkPage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text("Coming Soon! Stay Tuned."),
     );
   }

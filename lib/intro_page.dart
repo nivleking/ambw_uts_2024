@@ -22,29 +22,25 @@ class IntroPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'lib/images/logo.png',
+                'assets/images/logo.png',
                 height: 200,
                 width: 200,
                 color: Colors.white,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 48,
               ),
-
-              //title
-              Text(
+              const Text(
                 "Welcome to Sydney CBD",
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                     color: Colors.white),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
-
-              //subtitle
-              Text(
+              const Text(
                 "Find delicous and price-friendly meals and foods in here!",
                 style: TextStyle(
                   fontSize: 16,
@@ -52,12 +48,9 @@ class IntroPage extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,
               ),
-
-              SizedBox(
+              const SizedBox(
                 height: 48,
               ),
-
-              //start now
               GestureDetector(
                 onTap: () {
                   // print("1234567890");
@@ -74,7 +67,7 @@ class IntroPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   padding: EdgeInsets.all(25),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       "Order Now",
                       style: TextStyle(

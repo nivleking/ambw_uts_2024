@@ -11,12 +11,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "AMBW UTS 2024",
       debugShowCheckedModeBanner: false,
-      home: IntroPage(),
+      home: const IntroPage(),
       theme: ThemeData(
-        bottomAppBarTheme: BottomAppBarTheme(
-          color: Colors.grey[800],
+        textTheme: Theme.of(context).textTheme.apply(
+              bodyColor: Colors.black,
+            ),
+        colorScheme: ColorScheme(
+          primary: Colors.yellow.shade700,
+          primaryContainer: Colors.yellow.shade800,
+          secondary: Colors.blue,
+          secondaryContainer: Colors.blue.shade700,
+          surface: Colors.white,
+          background: Colors.grey.shade100,
+          error: Colors.red,
+          onPrimary: Colors.white,
+          onSecondary: Colors.white,
+          onSurface: Colors.black,
+          onBackground: Colors.black,
+          onError: Colors.white,
+          brightness: Brightness.light,
         ),
       ),
     );

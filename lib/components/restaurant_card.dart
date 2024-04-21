@@ -21,21 +21,24 @@ class MyRestaurantCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
         ),
         width: MediaQuery.of(context).size.width * 0.48,
-        // height: MediaQuery.of(context).size.height * 0.2,
+        height: MediaQuery.of(context).size.height * 0.2,
         child: Card(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.surface,
           borderOnForeground: true,
           elevation: 2,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(12),
+                  topRight: Radius.circular(12),
+                ),
                 child: Image.asset(
                   restaurant.imagePath,
                   fit: BoxFit.cover,
-                ),
-                borderRadius: BorderRadius.circular(
-                  12,
+                  height: 100,
+                  width: MediaQuery.of(context).size.width,
                 ),
               ),
               Padding(
@@ -45,22 +48,22 @@ class MyRestaurantCard extends StatelessWidget {
                   children: [
                     Text(
                       restaurant.name,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                        fontSize: 16,
                       ),
                       maxLines: 1,
                     ),
                     Text(
                       restaurant.address,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.grey,
                       ),
                       maxLines: 1,
                     ),
                     Text(
                       restaurant.category,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.grey,
                       ),
                       maxLines: 1,
