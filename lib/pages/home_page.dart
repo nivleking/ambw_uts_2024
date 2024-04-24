@@ -24,37 +24,56 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            const MySearchBar(),
-            const SizedBox(
-              height: 16,
+      child: Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(
+              top: 16.0,
+              left: 16.0,
+              right: 16.0,
             ),
-            const MyCarousel(),
-            const SizedBox(
-              height: 16,
+            child: Column(
+              children: [
+                MySearchBar(),
+                SizedBox(
+                  height: 16,
+                ),
+              ],
             ),
-            const HeaderComponent(
-              titleHeader: "Most Popular",
+          ),
+          const MyCarousel(),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 16.0,
+              right: 16.0,
+              bottom: 16.0,
             ),
-            HorizontalCards(
-              restaurant: restaurant,
-              mode: "restaurants",
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 16,
+                ),
+                const HeaderComponent(
+                  titleHeader: "Most Popular",
+                ),
+                HorizontalCards(
+                  restaurant: restaurant,
+                  mode: "restaurants",
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                const HeaderComponent(
+                  titleHeader: "Meal Deals",
+                ),
+                HorizontalCards(
+                  restaurant: restaurant,
+                  mode: "meals",
+                ),
+              ],
             ),
-            const SizedBox(
-              height: 16,
-            ),
-            const HeaderComponent(
-              titleHeader: "Meal Deals",
-            ),
-            HorizontalCards(
-              restaurant: restaurant,
-              mode: "meals",
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

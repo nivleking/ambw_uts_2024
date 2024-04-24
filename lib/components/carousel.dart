@@ -65,13 +65,13 @@ class _MyCarouselState extends State<MyCarousel> {
         double carouselWidth;
         double carouselHeight;
         if (width > 1200) {
-          carouselWidth = width - 40;
+          carouselWidth = width;
           carouselHeight = 600;
         } else if (width > 800) {
-          carouselWidth = width - 1;
+          carouselWidth = width;
           carouselHeight = 400;
         } else {
-          carouselWidth = width - 1;
+          carouselWidth = width;
           carouselHeight = 300;
         }
 
@@ -79,9 +79,9 @@ class _MyCarouselState extends State<MyCarousel> {
           alignment: Alignment.bottomLeft,
           children: [
             Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-              ),
+              // decoration: BoxDecoration(
+              //   borderRadius: BorderRadius.circular(12),
+              // ),
               width: carouselWidth,
               height: carouselHeight,
               child: PageView.builder(
@@ -97,16 +97,16 @@ class _MyCarouselState extends State<MyCarousel> {
                     fit: StackFit.expand,
                     children: [
                       ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
+                        // borderRadius: BorderRadius.circular(12),
                         child: Image.asset(
                           images[index]["path"]!,
                           fit: BoxFit.fill,
                         ),
                       ),
-                      DecoratedBox(
+                      const DecoratedBox(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          gradient: const LinearGradient(
+                          // borderRadius: BorderRadius.circular(12),
+                          gradient: LinearGradient(
                             colors: [Colors.transparent, Colors.black54],
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
